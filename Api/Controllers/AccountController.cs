@@ -1,5 +1,6 @@
 ﻿using JWTClaimsDemo.Entities.Models;
 using JWTClaimsDemo.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTClaimsDemo.Controllers
@@ -14,6 +15,7 @@ namespace JWTClaimsDemo.Controllers
             _accountService = accountService;
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult TransferFunds([FromBody] Transfer transfer)
         {
@@ -21,6 +23,7 @@ namespace JWTClaimsDemo.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpGet("{userId:int}")]
         public IActionResult GetAccounts(int userId)
         {
