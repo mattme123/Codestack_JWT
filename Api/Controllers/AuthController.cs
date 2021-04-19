@@ -1,11 +1,11 @@
 ﻿using JWTClaimsDemo.Entities.Models;
 using JWTClaimsDemo.Extensions;
 using JWTClaimsDemo.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTClaimsDemo.Controllers
 {
-    [Route("[controller]/[action]")]
     public class AuthController : BaseController
     {
         private readonly AuthService _authService;
@@ -14,6 +14,7 @@ namespace JWTClaimsDemo.Controllers
             _authService = authService;
         }
         
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody] LoginRequest request)
         {

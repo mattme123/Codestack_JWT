@@ -16,9 +16,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void { }
 
   transferFunds(fromAccountId: number, toAccountId: number, amount: number): void {
-    if (amount < 0) {
-      this.toastService.error('Amount can\'t be less than 0');
-    }
     this.dataService.post('Account/TransferFunds',
       {
         amount,

@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JWTClaimsDemo.Controllers
 {
-    //[Authorize]
-    [Route("[controller]/[action]")]
     public class AccountController : BaseController
     {
         private readonly AccountService _accountService;
@@ -16,7 +14,7 @@ namespace JWTClaimsDemo.Controllers
             _accountService = accountService;
         }
 
-        //[ValidateTransfer]
+        [ValidateTransfer]
         [HttpPost]
         public IActionResult TransferFunds([FromBody] Transfer transfer)
         {
@@ -24,7 +22,7 @@ namespace JWTClaimsDemo.Controllers
             return NoContent();
         }
 
-        //[ValidateUser]
+        [ValidateUser]
         [HttpGet("{userId:int}")]
         public IActionResult GetAccounts(int userId)
         {

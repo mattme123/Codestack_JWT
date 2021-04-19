@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JWTClaimsDemo.Controllers
 {
-    [Authorize]
-    [Route("[controller]/[action]")]
+    [Authorize(Roles = "1")]
     public class AdminController : BaseController
     {
         private readonly AccountService _accountService;

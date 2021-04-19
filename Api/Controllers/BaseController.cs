@@ -1,9 +1,11 @@
 ﻿using JWTClaimsDemo.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace JWTClaimsDemo.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class BaseController : ControllerBase
