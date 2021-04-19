@@ -1,14 +1,12 @@
-﻿using JWTClaimsDemo.ActionFilter;
-using JWTClaimsDemo.Entities.Models;
+﻿using JWTClaimsDemo.Entities.Models;
 using JWTClaimsDemo.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTClaimsDemo.Controllers
 {
-    //[Authorize]
+    [ApiController]
     [Route("[controller]/[action]")]
-    public class AccountController : BaseController
+    public class AccountController : ControllerBase
     {
         private readonly AccountService _accountService;
         public AccountController(AccountService accountService)
@@ -16,7 +14,6 @@ namespace JWTClaimsDemo.Controllers
             _accountService = accountService;
         }
 
-        //[ValidateTransfer]
         [HttpPost]
         public IActionResult TransferFunds([FromBody] Transfer transfer)
         {
@@ -24,7 +21,6 @@ namespace JWTClaimsDemo.Controllers
             return NoContent();
         }
 
-        //[ValidateUser]
         [HttpGet("{userId:int}")]
         public IActionResult GetAccounts(int userId)
         {

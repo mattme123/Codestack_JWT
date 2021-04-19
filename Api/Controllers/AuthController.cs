@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JWTClaimsDemo.Controllers
 {
+    [ApiController]
     [Route("[controller]/[action]")]
-    public class AuthController : BaseController
+    public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;
         public AuthController(AuthService authService)
@@ -22,12 +23,7 @@ namespace JWTClaimsDemo.Controllers
             if (user.IsNull())
                 return Unauthorized();
 
-            user.Token = _authService.WriteToken(new JWTRequest
-            {
-                UserId = user.UserId,
-                Email = user.Email,
-                RoleId = user.RoleId
-            });
+            user.Token = _authService.WriteToken();
 
             return Ok(user);
         }

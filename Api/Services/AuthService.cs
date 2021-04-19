@@ -6,10 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
 using System.Text;
 
 namespace JWTClaimsDemo.Services
@@ -28,7 +26,7 @@ namespace JWTClaimsDemo.Services
             return _context.Users.Include(x => x.Accounts).FirstOrDefault(x => x.Email == request.Email && x.Password == request.Password);
         }
 
-        public string WriteToken(JWTRequest request)
+        public string WriteToken()
         {
             string signingKey = Configuration.GetValue<string>("TokenSigningKey");
             string clientUrl = Configuration.GetValue<string>("ClientUrl");
@@ -40,11 +38,6 @@ namespace JWTClaimsDemo.Services
                 JwtSecurityToken tokenOptions = new JwtSecurityToken(
                     issuer: clientUrl,
                     audience: clientUrl,
-                    claims: new List<Claim> {
-                        new Claim (ClaimTypes.Role, request.RoleId.ToString()),
-                        new Claim (JwtRegisteredClaimNames.Email, request.Email),
-                        new Claim ("UserId", request.UserId.ToString())
-                    },
                     expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: credentials
                 );

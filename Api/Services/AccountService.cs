@@ -33,14 +33,5 @@ namespace JWTClaimsDemo.Services
         {
             return _context.Accounts.Where(x => x.UserId == userId).ToList();
         }
-
-        public void AddChristmasGift()
-        {
-            var accounts = _context.Accounts.ToList();
-
-            accounts.ForEach(x => x.Funds += 100);
-
-            _context.SaveChanges();
-        }
     }
 }
