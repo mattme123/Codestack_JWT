@@ -1,0 +1,75 @@
+.login-form {
+    padding: 3rem;
+    box-shadow: 0 3px 6px rgba(10, 12, 37, 0.2);
+    background-color: #316a86;
+    color: white;
+}
+
+.container {
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.red-border {
+    border: red solid 1px;
+}
+
+.container-fluid {
+    background-size: cover;
+    background-position: center center;
+    outline: solid 4px white;
+    outline-offset: -40px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.329);
+}
+
+.valid {
+    background-color: rgb(175, 67, 18) !important;
+    border-color: rgb(175, 67, 18) !important;
+}
+
+.shake {
+    visibility: visible !important;
+    -webkit-animation-name: shake;
+    animation-name: shake;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    16%,
+    50%,
+    83% {
+        transform: translateX(-10px);
+    }
+    33%,
+    66% {
+        transform: translateX(10px);
+    }
+}
+
+@-webkit-keyframes shake {
+    0%,
+    100% {
+        -webkit-transform: translateX(0);
+    }
+    16%,
+    50%,
+    83% {
+        -webkit-transform: translateX(-10px);
+    }
+    33%,
+    66% {
+        -webkit-transform: translateX(10px);
+    }
+}

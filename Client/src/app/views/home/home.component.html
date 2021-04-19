@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-12">
+                <a class="link" (click)="logOut()">Log out</a>
+                <h1>Welcome!</h1>
+                <button *ngIf="authService.roleId == 1" class="btn btn-success mr-3" (click)="christmasGift()">Christmas gift</button>
+            </div>
+            <div class="col-6">
+                <div class="row down">
+                    <div class="col-12" *ngIf="this.authService.accounts">
+                        <h2>Checking: ${{this.authService.accounts | account:1}}</h2>
+                    </div>
+                    <div class="col-6 mt-5">
+                        <input #checking class="form-control" type="number" name="" id="" min="0">
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-success mr-3" (click)="transferFunds(1,2,+checking.value)">Transfer to
+                            Savings</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row down">
+                    <div class="col-12" *ngIf="this.authService.accounts">
+                        <h2>Saving: ${{this.authService.accounts | account:2}}</h2>
+                    </div>
+                    <div class="col-6 mt-5">
+                        <input #saving class="form-control" type="number" name="" id="" min="0">
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-success" (click)="transferFunds(2,1,+saving.value)">Transfer to
+                            Checking</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
